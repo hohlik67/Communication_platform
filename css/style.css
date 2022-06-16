@@ -1,0 +1,212 @@
+/*СИСТЕМА*/
+html, body {padding: 0; margin: 0; height:100%;}
+body {overflow: hidden; font-family: Segoe UI; cursor:default}
+input, button {font-family: Segoe UI; padding:0;}
+input:focus {outline:none} 
+button:focus {outline:none}
+button:hover {cursor:pointer}
+textarea {font-family:Segoe UI; resize:none}
+textarea:focus {outline:none}
+textarea::-webkit-scrollbar{width: 0}
+
+.close {position:absolute; top:0; right:0; width:2.8vw; height:2.8vw; transition: transform 0.5s;}
+    .close:hover {cursor:pointer; transform:rotate(360deg)}
+    
+.top {height:8%; width:100%; background:#52B397; display:flex; overflow:hidden;}
+    .top>.logo {height:100%; width:18%; display:flex; align-items:center; margin-left:2%; font-size:1.4vw; font-weight:600; color:#fff; overflow:hidden;}
+    /*меню*/
+    .top>.menu {height:100%; width:55%; display:flex; align-items:center; justify-content:center}
+        .top>.menu>button {background:none; border:0; border:0; margin:0 2%; font-size:0.9vw; font-weight:600; padding:3px 0;}
+            #all_feed {color:#fff;}
+    /*авторизация*/
+    #aut {width:24%; display:flex; align-items:center; flex-direction: row-reverse;}
+        #aut>button {margin:0 1%;}
+        .login {background:#fff; border:0; border-radius:2px; padding:10px 14px; font-size:0.95vw; font-weight:600; transition:background 0.3s;}
+        .register {background:#fff; border:0; border-radius:2px; padding:10px 14px; font-size:0.95vw; font-weight:600; transition:background 0.3s;}
+        .personal {background:#fff; border:0; border-radius:2px; padding:10px 14px; font-size:0.95vw; font-weight:600; transition:background 0.3s;}
+        .exit {background:#575757; color:#fff; border:0; border-radius:2px; padding:10px 14px; font-size:0.95vw; font-weight:600; transition:background 0.3s;}
+
+.content {height:92%; width:100%;}
+
+    /*все статьи*/
+    #content_all_feed {display:none; height:100%; width:100%; overflow:hidden;}
+        /*статьи*/
+        #content_all_feed_arts {height:100%; width:75%; overflow-x:hidden; overflow-y:scroll;}
+            /*текст загрузка*/
+            #content_all_feed_arts>.wite {font-size:1.1vw; margin:4px 0 0 8px; color:#707070; text-align:left;}
+            /*текст больше нет статей или подгрузка*/
+            #content_all_feed_arts_next {font-size:1.1vw; color:#707070; margin:6px 0; letter-spacing:1px;}
+            
+        /*сортировка*/
+        #content_all_feed_sort {display:flex; flex-direction:column; align-items:center; height:100%; width:25%; border-left:1px solid #ebebeb; overflow:hidden;}
+            #content_all_feed_sort>button {width:80%; height:8%; margin-top:2%; font-size:1.2vw; background:#dedede; color:#000; font-weight:600; border:0; border-radius:4px;}
+    
+    /*одна статья*/
+    #content_one_art {display:none; height:100%; width:100%; overflow:hidden;}
+        #content_one_art_art {height:100%; width:75%; overflow-x:hidden; overflow-y:scroll;}
+            #content_one_art_art>div {display:flex; flex-direction:column; margin-top:2%; height:98%; width:75%;}
+                /*дата*/
+                #content_one_art_art>div>.date {width:100%; text-align:right; font-size:1.1vw; color:#db0f3f; font-weight:600; margin-bottom:2%;}
+                    #content_one_art_art>div>.date>div {display:inline-block; color:#6e6e6e}
+                /*заголовок*/
+                #content_one_art_art>div>.title {width:100%; text-align:left; font-size:1.4vw; font-weight:600; line-height:1.6vw; margin-bottom:2%;}
+                /*картинка, если есть*/
+                #content_one_art_art>div>.img {width:100%;}
+                    #content_one_art_art>div>.img>img {width:100%;}
+                /*сортировка*/
+                #content_one_art_art>div>.sort {width:100%; text-align:left; font-size:1.1vw; color:#db0f3f; font-weight:600;}
+                /*текст*/
+                #content_one_art_art>div>.txt {width:100%; text-align:left; font-size:1.1vw; color:#000;}
+                /*все комменты*/
+                #content_one_art_art>div>.all_comment {width:100%; text-align:left;}
+                    #content_one_art_art>div>.all_comment>.all_comment_top {font-size:1.4vw; font-weight:600; margin-bottom:12px; border-top:1px solid #ccc; padding-top:4px;}
+                    /*один коммент*/
+                    #content_one_art_art>div>.all_comment>.one_comment {width:100%; display:flex; border-bottom:1px solid #ccc; padding:6px 0;}
+                        #content_one_art_art>div>.all_comment>.one_comment>.autor {width:15%; font-size:1.1vw; color:#db0f3f; font-weight:600; overflow:hidden;}
+                            #content_one_art_art>div>.all_comment>.one_comment>.autor>div {display:inline-block; border-bottom:1px solid #fff;}
+                                #content_one_art_art>div>.all_comment>.one_comment>.autor>div:hover {cursor:pointer; border-bottom:1px solid #db0f3f;}
+                        #content_one_art_art>div>.all_comment>.one_comment>.txt {width:85%; font-size:1.1vw; overflow:hidden;}
+                            #content_one_art_art>div>.all_comment>.one_comment>.txt>div {width:100%; text-align:right; font-size:0.9vw; font-weight:600; color:#6e6e6e;}
+                        /*нет комментов*/
+                        #content_one_art_art>div>.all_comment>.no_comment {width:100%; font-size:1.1vw; color:#878787; text-align:center;}
+                /*добавить комментарий*/
+                #content_one_art_art>div>.add_comment {width:100%; text-align:left; margin-top:2%;}
+                    #content_one_art_art>div>.add_comment>.add_comment_top {font-size:1.4vw; font-weight:600; margin-bottom:12px; padding-top:4px;}
+                    #content_one_art_art>div>.add_comment>.add_comment_body {width:100%; display:flex; height:34px;}
+                        #content_one_art_art>div>.add_comment>.add_comment_body>input {width:94%; padding:0; border:0; font-size:1vw; border-radius:0; border-bottom:1px solid #db0f3f;}
+                        #content_one_art_art>div>.add_comment>.add_comment_body>button {width:6%; padding:0; border:0; font-size:0.9vw; font-weight:600; border-radius:4px 4px 4px 0; background:#db0f3f; color:#fff;}
+                    
+        #content_one_art_autor {height:20%; margin:2% 2.5%; width:20%; border-radius:8px; border:1px solid #d1d1d1; overflow:hidden;}
+            #content_one_art_autor>div {width:calc(100% - 8px); padding:4px 0 0 8px; font-size:1.4vw; font-weight:600; text-align:left;}
+            #content_one_art_autor>button {margin-top:12px; width:60%; padding:10px; border:0; border-radius:4px; background:#dedede; color:#000; font-size:0.85vw; font-weight:600; letter-spacing:1px;}
+    
+    /*аккаунт юзера*/
+    #content_user_personal {display:none; height:100%; width:100%; overflow:hidden;}
+        /*статьи юзера*/
+        #content_user_personal_arts {height:100%; width:75%; overflow-x:hidden; overflow-y:scroll;}
+            .one_art {display:flex; flex-direction: column; width:80%; margin-top:2%; padding:8px; border-radius:4px; background:#f0f0f0;}
+                .one_art:hover {cursor:pointer;}
+                .one_art>.img {height:400px; width:100%; margin-bottom:6px; border-radius:4px; overflow:hidden;}
+                    .one_art>.img>img {height:100%; width:100%; object-fit:cover}
+                .one_art>.sort {display:flex; width:100%; text-align:left; font-size:1.1vw; font-weight:600; color:#db0f3f; overflow:hidden;}
+                    .one_art>.sort>.date {margin-left:auto; color:#737373; font-size:1vw; overflow:hidden;}
+                .one_art>.title {width:100%; text-align:left; font-size:1.4vw; font-weight:600; color:#000; overflow:hidden;}
+        /*инфо юзера*/
+        #content_user_personal_info {height:100%; width:25%; border-left:1px solid #ebebeb; overflow:hidden;}
+            #content_user_personal_info>.name {width:94%; font-size:1.6vw; font-weight:600; text-align:left; overflow:hidden;}
+            #content_user_personal_info>.stat {width:94%; font-size:0.8vw; margin-top:10px; font-weight:600; text-align:left; overflow:hidden;}
+        /*текст загрузка*/
+        #content_user_personal>div>.wite {font-size:1vw; margin:4px 0 0 8px; color:#707070; text-align:left;}
+
+    /*статьи подписок*/
+    #content_pubs {display:none; height:100%; width:100%; overflow:hidden;}
+        #content_pubs_art {height:100%; width:75%; overflow-x:hidden; overflow-y:scroll; border-left:1px solid #ebebeb;}
+        /*текст загрузка*/
+        #content_pubs_art>.wite {font-size:1vw; margin:4px 0 0 8px; color:#707070; text-align:left;}
+        /*автор статей*/
+        .pub_feed_autor {display:flex; width:90%; text-align:left; font-size:1.4vw; font-weight:600; margin-top:12px;}
+            .pub_feed_autor>div {border-bottom:1px solid #fff; margin-left:6px;}
+                .pub_feed_autor>div:hover {cursor:pointer; border-bottom:1px solid #db0f3f;}
+        .no_art {font-size:1.1vw; margin:4px 0 0 8px; color:#707070;}
+
+/*модалки*/
+#modal {display:none; align-items:center; justify-content:center; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.6)}
+    /*поиск*/
+    #modal_search {position:relative; align-items:center; justify-content:center; display:none; height:80%; width:40%; background:#fff; border-radius:4px;}
+        #modal_search>.top_txt {display:flex; align-items:center; position:absolute; top:2%; left:3%; font-size:1.1vw; font-weight:600;}
+        #modal_search>.body {display:flex; align-items:center; justify-content:center; width:94%; height:86%; display:flex; flex-direction:column;}
+            #modal_search>.body>input {width:100%; height:4%; font-size:1.1vw; border:0;}
+            #modal_search>.body>div {width:100%; height:calc(90% - 8px); margin-top:8px; border-bottom:1px solid #dedede; border-top:1px solid #dedede; overflow-x:hidden; overflow-y:scroll;}
+                /*ожидание, загрузка, отсутствие*/
+                #modal_search>.body>div>.wite {font-size:1vw; color:#8c8c8c;}
+    /*обсуждения*/
+    #modal_discuss {position:relative; align-items:center; justify-content:center; display:none; height:90%; width:60%; background:#fff; border-radius:4px;}
+        #modal_discuss>.top_txt {display:flex; align-items:center; position:absolute; top:1.8%; left:2%; font-size:1.1vw; font-weight:600;}
+        /*список дискуссий*/
+        #modal_discuss>.body {display:flex; align-items:center; margin-top:2%; justify-content:center; width:96%; height:86%; flex-direction:column;}
+            /*все чаты*/
+            #all_discuss {height:80%; width:100%; margin-bottom:2%; border-bottom:1px solid #dedede; border-top:1px solid #dedede; overflow-x:hidden; overflow-y:scroll;}
+                /*загрузка*/
+                #discuss_wite {width:100%; font-size:1.05vw; color:#8c8c8c; margin-top:6px;}
+                /*каждая дискуссия*/
+                #all_discuss>.one_discuss {display:flex; width:95%; padding:8px; border-radius:4px; background:#f0f0f0; margin:2% 0; border:1px solid #f0f0f0; transition:background 0.3s;}
+                    #all_discuss>.one_discuss:hover {cursor:pointer; background:#fff;}
+                    #all_discuss>.one_discuss>.txt {height:100%; width:70%; font-size:1.1vw; font-weight:600;}
+                    #all_discuss>.one_discuss>.join_open {display:flex; align-items:center; justify-content:center; align-text:center; width:30%; height:30px; font-size:1.05vw; font-weight:600; color:#068c74;}
+                    #all_discuss>.one_discuss>.join_close {display:flex; align-items:center; justify-content:center; align-text:center; width:30%; height:30px; font-size:1.05vw; font-weight:600; color:#9c1616;}
+            /*создать дискуссию*/
+            #add_discuss {height:20%; width:100%; display:flex; flex-direction:column;}
+                #add_discuss>.txt {width:100%; height:30%; display:flex; align-items:center; font-size:1.1vw; font-weight:600;}
+                #add_discuss>.data {display:flex; width:100%; height:30%;}
+                    #text_discuss {height:70%; width:calc(75% - 8px); border:0; border-bottom:1px solid #dedede; font-size:1.1vw; padding-right:8px;}
+                    #pass_discuss {height:70%; width:calc(25% - 1px); border:0; border-bottom:1px solid #dedede; border-left:1px solid #dedede; font-size:1.1vw; text-align:right;}
+                #add_discuss>button {height:40%; background:#52B397; border:0; color:#000; font-size:0.9vw; font-weight:600;}
+        /*пароль от дискуссии*/
+        #discuss_pass {position:relative; display:none; align-items:center; justify-content:center; margin-top:2%; width:96%; height:86%;}
+            #discuss_pass>.back {position:absolute; top:0; left:0; background:#858585; width:calc(30% - 24px); color:#fff; margin-right:4px; font-size:0.8vw; height:28px; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:4px; font-weight:600;}
+                #discuss_pass>.back:hover {cursor:pointer;}
+            #discuss_pass>.body {padding:12px 24px; border-radius:4px; background:#e8e8e8; display:flex; flex-direction:column;}
+                #discuss_pass>.body>div {margin-top:6px; text-align:left; font-size:1vw; font-weight:600;}
+                #discuss_pass>.body>input {margin-top:12px; height:28px; border-radius:4px; text-indent:6px; padding:0; border:0;}
+                #discuss_pass>.body>button {margin-top:12px; height:28px; border-radius:4px; padding:0 12px; background:#52B397; border:0; color:#000; font-size:0.9vw; font-weight:600;}
+        /*чат*/
+        #discuss_chat {position:relative; display:none; margin-top:2%; width:96%; height:86%; flex-direction:column;}
+            #discuss_chat>.back {background:#858585; color:#fff; margin-right:4px; width:30%; font-size:0.8vw; margin-bottom:2%; height:28px; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:4px; font-weight:600;}
+                #discuss_chat>.back:hover {cursor:pointer;}
+                #all_message_wite {width:100%; font-size:1.05vw; color:#8c8c8c; margin-top:6px;}
+            /*все сообщения*/
+            #all_message {height:84%; border-top:1px solid #dedede; overflow-x:hidden; overflow-y:scroll; border-bottom:1px solid #dedede;}
+                /*одно сообщение*/
+                #all_message>.oness {display:flex; flex-direction:column; width:50%; padding:8px; border-radius:4px; background:#f0f0f0; margin:2% 0;}
+                    #all_message>.oness>.name {font-size:1vw; font-weight:600;}
+                    #all_message>.oness>.text {font-size:1vw;}
+                    #all_message>.oness>.date {font-size:0.9vw; text-align:right; color:#8c8c8c; margin-top:4px;}
+            #discuss_chat>.bottom {display:flex; height:32px; border-bottom:1px solid #52B397; margin-top:2%;}
+                #discuss_chat>.bottom>input {width:95%; padding:0; border:0; font-size:1.1vw;}
+                #discuss_chat>.bottom>button {width:5%; padding:0; border:0; font-size:0.9vw; background:#52B397; color:#000; font-weight:600; border-radius:4px 4px 4px 0; border:0;}
+    /*вход*/
+    #modal_login {position:relative; display:none; align-items:center; justify-content:center; flex-direction: column; height:40%; width:20%; background:#fff; border-radius:4px;}
+        #modal_login>.top_txt {display:flex; align-items:center; position:absolute; top:2%; left:3%; font-size:1.1vw; font-weight:600;}
+        #modal_login>div {width:80%; text-align:left; font-size:1vw; font-weight:600;}
+        #modal_login>input {width:80%; margin-bottom:8px; border:0; border-bottom:1px solid #787878; font-size:1vw; padding:2px 0;}
+        #modal_login>button {font-size:0.8vw; background:#52B397; color:#000; border:0; border-radius:4px; padding:8px 14px; font-weight:600;}
+    /*регистрация*/    
+    #modal_register {position:relative; display:none; align-items:center; justify-content:center; flex-direction: column; height:60%; width:20%; background:#fff; border-radius:4px;}
+        #modal_register>.top_txt {display:flex; align-items:center; position:absolute; top:2%; left:3%; font-size:1.1vw; font-weight:600;}
+        #modal_register>div {width:80%; text-align:left; font-size:1vw; font-weight:600;}
+        #modal_register>input {width:80%; margin-bottom:8px; border:0; border-bottom:1px solid #787878; font-size:1vw;}
+        #modal_register>button {font-size:0.8vw; background:#52B397; color:#000; border:0; border-radius:4px; padding:8px 14px; font-weight:600;}
+    /*новая статья*/    
+    #modal_add_art {position:relative; display:none; align-items:center; justify-content:center; flex-direction: column; height:80%; width:50%; background:#fff; border-radius:4px;}
+        #modal_add_art>.top_txt {display:flex; align-items:center; position:absolute; top:2%; left:3%; font-size:1.1vw; font-weight:600;}
+        #modal_add_art>.txt {width:90%; text-align:left; font-size:1vw; font-weight:600;}
+        #modal_add_art>input {width:90%; margin-bottom:12px; border:0; border-bottom:1px solid #ebebeb; font-size:0.95vw; padding:2px 0;}
+        #modal_add_art>textarea {width:calc(90% - 12px); height:calc(40% - 4px); margin-bottom:8px; border:1px solid #ebebeb; margin-top:6px; padding:2px 6px; border-radius:2px; font-size:0.95vw;}
+        
+        #modal_add_art>.bottom {display:flex; margin-top:4px; padding-bottom:12px; width:90%; height:28px; border-bottom:1px solid #ebebeb;}
+            #modal_add_art>.bottom>label {height:100%;}
+                #modal_add_art>.bottom>label>div {background:#858585; color:#fff; margin-right:4px; font-size:0.8vw; height:100%; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:4px; font-weight:600;}
+                    #modal_add_art>.bottom>label>div:hover {cursor:pointer;}
+                    
+            #modal_add_art>.bottom>select {margin-left:auto; width:30%; font-size:1vw; outline:none; border:0;}
+            
+            #modal_add_art>.bottom>div {display:flex; margin-left:auto; width:40%; height:100%; align-items:center; justify-content:center;}
+                #modal_add_art>.bottom>div>div {display:flex; align-items:center; font-size:1vw; font-weight:600; height:100%;}
+                #modal_add_art>.bottom>div>select {font-family:Segoe UI; margin-left:auto; width:70%; font-size:1vw; outline:none; border:0; padding:0; height:100%;}
+                
+        #modal_add_art>button {font-size:0.8vw; background:#52B397; color:#000; border:0; border-radius:4px; padding:8px 14px; font-weight:600;}
+        
+/*модал инфо*/
+#modal_info_fon {display:none; align-items:center; justify-content:center; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.6)}
+    #modal_info_div {position:relative; display:flex; align-items:center; justify-content:center; height:10%; width:30%; background:#fff; border-radius:4px; font-size:1.1vw; font-weight:600;}
+        #modal_info_div>div {width:80%; text-align:center;}
+        
+        
+/*удаление*/
+.delete {display:none; padding:4px 12px; font-size:0.75vw; border:0; border-radius:4px; background:#000; color:#fff; margin-left:auto;}
+        
+        
+        
+        
+        
+        
